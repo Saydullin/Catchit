@@ -1,0 +1,110 @@
+* {
+    box-sizing: border-box;
+    transition: all 1s;
+}
+
+body {
+    background-color: #F0F0F0;
+    user-select: none;
+    overflow: hidden;
+    margin: 20px 50px;
+    font-family: 'Balsamiq Sans', cursive;
+}
+
+.place {
+    border-radius: 10px;
+    background-color: #F0D9D9;
+    height: calc(100vh - 100px);
+    box-shadow: 0px 2px 8px rgba(0,0,0,0.30);
+}
+
+.eat {
+    transition: all 0.5s;
+}
+
+.texts {
+    margin-top: -20px;
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+    align-items: center;
+}
+
+.h2 {
+    text-align: center;
+    font-size: 24px;
+    color: #4A4A4A;
+    opacity: 0;
+    transition: 3s;
+}
+
+.total {
+    text-align: right;
+    font-size: 24px;
+}
+
+.mouse {
+    z-index: 6;
+}
+
+.eat {
+    position: absolute;
+    opacity: 0;
+    transition: .5s;
+    z-index: 5;
+}
+
+.img {
+    opacity: 0;
+    top: 0;
+    left: 0;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    transition: opacity 4s;
+}
+
+@media (max-width: 420px) {
+    .h2 {
+        text-align: center;
+        font-size: 16px;
+        color: #4A4A4A;
+        opacity: 0;
+        transition: 3s;
+    }
+    .total {
+        text-align: right;
+        font-size: 16px;
+    }
+    .eat {
+        position: absolute;
+        opacity: 0;
+        transition: .5s;
+        width: 30px;
+        height: 30px;
+    }
+
+    .catchit {
+        width: 33px;
+        height: 33px;
+    }
+
+    .mouse {
+        width: 40px;
+        height: 40px;
+        z-index: 6;
+    }
+    .place {
+        border-radius: 10px;
+        background-color: #F0D9D9;
+        height: calc(100vh - 150px);
+        box-shadow: 0px 2px 8px rgba(0,0,0,0.30);
+    }
+    body {
+        background-color: #F0F0F0;
+        user-select: none;
+        overflow-y: hidden;
+        overflow-x: hidden;
+        margin: 20px 20px;
+        font-family: 'Balsamiq Sans', cursive;
+    }
+}
