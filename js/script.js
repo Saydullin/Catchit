@@ -9,23 +9,23 @@ eatall = document.querySelectorAll(".eat");
 place = document.querySelector(".place");
 let xRand = 0;
 let yRand = 0;
-let xRand2 = 0;
-let yRand2 = 0;
 let counter = 1;
 count = 0;
-let newLast = 0;
-var timer = 7500;
+var timer = 6500;
 var last = 0;
 let setint;
+setTimeout(blink, 3000);
 function getRand (min, max) {
 min = Math.ceil(min);
 max = Math.floor(max);
 return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-//document.addEventListener("DOMContentLoaded", () => {
-//   clearInterval(eating);
-//});
+let bgc = {3: {color:"#F0CBCB", timer:5000}, 
+10: {color:"#77DECA", timer:2200}, 20: {color:"#DFEA88", timer:1800},
+30: {color:"#5F7AFF", timer:1500}, 40: {color: "#44FF5F", timer:3000},
+50: {color:"#FFFFFF", timer:2000}, 60: {color:"#9BFFFA", timer:1400},
+70: {color:"#ACACAC", timer:1000}, 80: {color:"#FFD818", timer:300}};
 
 function blink () {
     h2.style.opacity = counter;
@@ -40,14 +40,12 @@ function blink () {
 
 function prom () {
     h2.style.opacity = "1";
-    document.querySelector(".h2").textContent = "Подбирайте только съедобное!";
+    document.querySelector(".h2").textContent = "Время постепенно увеличивается!";
     setTimeout(function() {
         h2.style.opacity = "0";
         h2.remove();
     }, 5000);
 };
-
-setTimeout(blink, 3000);
 
 function letall () {
     last = 0;
@@ -62,10 +60,9 @@ function letall () {
 };
 
 function showAll (showImage, ind) {
-    xRand = getRand(200, place.offsetWidth);
-    yRand = getRand(200, place.offsetHeight);
+    xRand = getRand(25, place.offsetWidth);
+    yRand = getRand(35, place.offsetHeight);
     showImage.style.opacity = "1";
-    showImage.style.display = "inline";
     showImage.style.transition = 0.5 + "s";
     showImage.style.left = xRand + "px";
     showImage.style.top = yRand + "px";
@@ -82,33 +79,20 @@ place.addEventListener("click", () => {
         img.style.left = event.pageX + "px";
         img.style.top = event.pageY + "px";
         img.style.opacity = "1";
-        if ((eatall[last].offsetLeft >= event.pageX-40) && (eatall[last].offsetLeft <= event.pageX+40) && (eatall[last].offsetTop >= event.pageY-40) && (eatall[last].offsetTop <= event.pageY+40)) {
+        if ((eatall[last].offsetLeft >= event.pageX-45) && (eatall[last].offsetLeft <= event.pageX+45) && (eatall[last].offsetTop >= event.pageY-45) && (eatall[last].offsetTop <= event.pageY+45)) {
         count += 1;
         xRand = 0;
         yRand = 0;
+        alert(last);
         eatall[last].style.opacity = "0";
         last = "";
         catchit.src = "pics/tick.svg";
         document.querySelector(".total").textContent = `Собрано фруктов: ${count}`;
-        if (count==3) {
-            timer = 4000;
+        if (bgc[count]) {
             clearInterval(setint);
-            setint = setInterval(letall, timer);
+            setint = setInterval(letall, bgc[count].timer);
+            place.style.backgroundColor = bgc[count].color;
         }
-        if ((count >= 10) && (count < 20)) {
-            timer = 2000;
-            clearInterval(setint);
-            setint = setInterval(letall, timer);
-            place.style.backgroundColor = "#77DECA";
-        } else if ((count >= 20) && (count < 30)) {
-            place.style.backgroundColor = "#DFEA88";
-        } else if ((count >= 30) && (count < 40)){
-            body.style.backgroundColor = "#F0F0F0";
-            place.style.backgroundColor = "#5F7AFF";
-            total.style.color = "#000000";
-        } else if (count >= 40) {
-            place.style.backgroundColor = "#44FF5F";
-        };
     };
 });
 
