@@ -9,11 +9,8 @@ eatall = document.querySelectorAll(".eat");
 place = document.querySelector(".place");
 let xRand = 0;
 let yRand = 0;
-let xRand2 = 0;
-let yRand2 = 0;
 let counter = 1;
 count = 0;
-let newLast = 0;
 var timer = 7500;
 var last = 0;
 let setint;
@@ -22,10 +19,6 @@ min = Math.ceil(min);
 max = Math.floor(max);
 return Math.floor(Math.random() * (max - min + 1)) + min;
 }
-
-//document.addEventListener("DOMContentLoaded", () => {
-//   clearInterval(eating);
-//});
 
 function blink () {
     h2.style.opacity = counter;
