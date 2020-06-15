@@ -83,7 +83,6 @@ place.addEventListener("click", () => {
         count += 1;
         xRand = 0;
         yRand = 0;
-        alert(last);
         eatall[last].style.opacity = "0";
         last = "";
         catchit.src = "pics/tick.svg";
